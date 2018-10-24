@@ -1,17 +1,17 @@
 package main;
 
 public class Pokemon {
-	public static String name;
-	public static int hp;
-	public static int att;
-	public static int def;
-	public static int spatt;
-	public static int spdef;
-	public static int speed;
-	public static int m1;
-	public static int m2;
-	public static int m3;
-	public static int m4;
+	public String name;
+	public int hp;
+	public int att;
+	public int def;
+	public int spatt;
+	public int spdef;
+	public int speed;
+	public int m1;
+	public int m2;
+	public int m3;
+	public int m4;
 	Pokemon(String a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k){
 		name = a;
 		hp = b;
@@ -26,10 +26,11 @@ public class Pokemon {
 		m4 = k;
 	}
 	
-	public static int adjHp(int diff) {
+	public int adjHp(int diff) {
 		hp += diff;
 		return hp;
 	}
+	
 	
 	
 }
