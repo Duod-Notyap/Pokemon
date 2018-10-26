@@ -12,7 +12,9 @@ public class Pokemon {
 	public Moves m2;
 	public Moves m3;
 	public Moves m4;
-	Pokemon(String a, int b, int c, int d, int e, int f, int g, Moves h, Moves i, Moves j, Moves k){
+	public String type1;
+	public String type2;
+	Pokemon(String a, int b, int c, int d, int e, int f, int g, Moves h, Moves i, Moves j, Moves k, String l, String m){
 		name = a;
 		hp = b;
 		att = c;
@@ -24,11 +26,12 @@ public class Pokemon {
 		m2 = i;
 		m3 = j;
 		m4 = k;
+		type1 = type1 != null ? type1 : l;
+		type2 = type2 != null ? type2 : m;
 	}
 
-	public int adjHp(int diff) {
+	public void adjHp(int diff) {
 		hp += diff;
-		return hp;
 	}
 	
 	
