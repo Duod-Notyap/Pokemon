@@ -8,11 +8,11 @@ public class Pokemon {
 	public int spatt;
 	public int spdef;
 	public int speed;
-	public int m1;
-	public int m2;
-	public int m3;
-	public int m4;
-	Pokemon(String a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k){
+	public Moves m1;
+	public Moves m2;
+	public Moves m3;
+	public Moves m4;
+	Pokemon(String a, int b, int c, int d, int e, int f, int g, Moves h, Moves i, Moves j, Moves k){
 		name = a;
 		hp = b;
 		att = c;
@@ -25,7 +25,7 @@ public class Pokemon {
 		m3 = j;
 		m4 = k;
 	}
-	
+
 	public int adjHp(int diff) {
 		hp += diff;
 		return hp;
