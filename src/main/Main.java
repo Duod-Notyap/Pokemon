@@ -89,7 +89,7 @@ public class Main {
 	public static Moves move1;
 	public static Moves move2;
 	public static void fight(Pokemon a, Pokemon b, String priority) {
-		System.out.println("What move would you like to use?\n1) " + a.m1.name + "\n2) " + a.m2.name + "\n3) " + a.m3.name + "\n4) " + a.m4.name);
+		System.out.println("What move would you like to use?\n1) " + a.m1.name + " : " + a.m1.PP + "\n2) " + a.m2.name + " : " + a.m2.PP + "\n3) " + a.m3.name + " : " + a.m3.PP + "\n4) " + a.m4.name + " : " + a.m4.PP);
 		int userMoveChoice = Input.nextInt();
 		int Mod = 1;
 		double enemAttChoice = Math.random()*4.0;
@@ -113,6 +113,7 @@ public class Main {
 						break;
 				case 2: powerMove = c.m2;
 						power = powerMove.power;
+						powerMove.PP -= 1;
 						break;
 				case 3: powerMove = c.m3;
 						power = powerMove.power;
@@ -157,16 +158,17 @@ public class Main {
 			move1 = enemAtt;
 			move2 = powerMove;
 		}
-		
+		powerMove.PP -= 1;
+		enemAtt.PP -= 1;
 		System.out.println(enemAtt + " " + enemAttChoice);
 		int damage = -1*((((20/5)+2)*power*(c.att/d.def)/50)+2)*Mod;
-		if(!move1.name.equalsIgnoreCase("Empty")) {
+		if(!move1.name.equalsIgnoreCase("Empty") && move1.PP >= 0) {
 			d.adjHp(damage);
 			System.out.println(c.name + " used " + move1.name + "!");
 			System.out.println(c.name + " hit " + d.name + " for " + damage + " damage!");
 		}
 		damage = -1*((((20/5)+2)*enemAtt.power*(d.att/c.def)/50)+2)*Mod;
-		if(!move2.name.equalsIgnoreCase("Empty")) {
+		if(!move2.name.equalsIgnoreCase("Empty") && move2.PP >= 0) {
 			System.out.println(d.name  + " used " + move2.name + "!");
 			System.out.println(d.name + " hit " + c.name + " for " + damage + " damage!");
 			c.adjHp(damage);
@@ -184,5 +186,34 @@ public class Main {
 	public static void swapActive() {
 		
 	}
-	
+	public static int moveChoice(Pokemon a) {
+		double enemAttChoice = Math.random()*4.0;
+		int enemChoice = ((int) enemAttChoice)+1;
+		switch(enemChoice) {
+			case 1 : if(a.m1.name.equalsIgnoreCase("Empty")) {
+						moveChoice(a);
+					}else {
+						return enemChoice;
+					}
+					break;
+			case 2 : if(a.m1.name.equalsIgnoreCase("Empty")) {
+							moveChoice(a);
+					}else {
+						return enemChoice;
+					}
+					break;
+			case 3 : if(a.m1.name.equalsIgnoreCase("Empty")) {
+						moveChoice(a);
+					}else {
+						return enemChoice;
+					}
+				   	break;
+			case 4 : if(a.m1.name.equalsIgnoreCase("Empty")) {
+						moveChoice(a);
+					}else {
+						return enemChoice;
+					}
+					break;
+		}
+	}
 }
