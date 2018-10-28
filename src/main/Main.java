@@ -57,6 +57,8 @@ public class Main {
 				priority = a.name;
 			}
 		}
+		System.out.println("You: " + a.name + ": " + a.hp);
+		System.out.println("Enemy: " + b.name + ": " + b.hp);
 		System.out.println("What would you like to do?\n1) Fight\n2) Bag\n3) Pokemon\n4) Run");
 		menuChoice = Input.nextInt();
 		switch(menuChoice) {
@@ -68,6 +70,13 @@ public class Main {
 					break;
 			case 4: run();
 					break;
+		}
+		if(a.hp < 0) {
+			System.out.println("YOU DIED");
+		}else if(b.hp < 0){
+			System.out.println("YOU WIN");
+		}else {
+			BattleStart(a, b);
 		}
 	}
 
@@ -93,9 +102,23 @@ public class Main {
 						break;
 				case 2: enemAtt = d.m2;
 						break;
-				case 3: enemAtt = d.m3;
+				case 3: enemAtt = d.m3; 
 						break;
 				case 4: enemAtt = d.m4;
+						break;
+			}
+			switch(userMoveChoice) {
+				case 1: powerMove = c.m1;
+						power = powerMove.power;
+						break;
+				case 2: powerMove = c.m2;
+						power = powerMove.power;
+						break;
+				case 3: powerMove = c.m3;
+						power = powerMove.power;
+						break;
+				case 4: powerMove = c.m4;
+						power = powerMove.power;
 						break;
 			}
 		}else if(b.name == priority) {
@@ -111,22 +134,22 @@ public class Main {
 				case 4: enemAtt = c.m4;
 						break;
 			}
+			switch(userMoveChoice) {
+				case 1: powerMove = d.m1;
+						power = powerMove.power;
+						break;
+				case 2: powerMove = d.m2;
+						power = powerMove.power;
+						break;
+				case 3: powerMove = d.m3;
+						power = powerMove.power;
+						break;
+				case 4: powerMove = d.m4;
+						power = powerMove.power;
+						break;
+			}
 		}
 		
-		switch(userMoveChoice) {
-			case 1: powerMove = c.m1;
-					power = powerMove.power;
-					break;
-			case 2: powerMove = c.m2;
-					power = powerMove.power;
-					break;
-			case 3: powerMove = c.m3;
-					power = powerMove.power;
-					break;
-			case 4: powerMove = c.m4;
-					power = powerMove.power;
-					break;
-		}
 		if (a == c && b == d) {
 			move1 = powerMove;
 			move2 = enemAtt;
@@ -137,9 +160,11 @@ public class Main {
 		
 		System.out.println(enemAtt + " " + enemAttChoice);
 		int damage = -1*((((20/5)+2)*power*(c.att/d.def)/50)+2)*Mod;
-		d.adjHp(damage);
-		System.out.println(c.name + " used " + move1.name + "!");
-		System.out.println(c.name + " hit " + d.name + " for " + damage + " damage!");
+		if(!move1.name.equalsIgnoreCase("Empty")) {
+			d.adjHp(damage);
+			System.out.println(c.name + " used " + move1.name + "!");
+			System.out.println(c.name + " hit " + d.name + " for " + damage + " damage!");
+		}
 		damage = -1*((((20/5)+2)*enemAtt.power*(d.att/c.def)/50)+2)*Mod;
 		if(!move2.name.equalsIgnoreCase("Empty")) {
 			System.out.println(d.name  + " used " + move2.name + "!");
