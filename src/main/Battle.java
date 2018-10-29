@@ -2,7 +2,8 @@ package main;
 import java.util.Scanner;
 import main.Pokemon;
 
-public class Main {
+public class Battle {
+	public static boolean killgame = false;
 	static Scanner Input = new Scanner(System.in);
 	static Pokemon enemPoke;
 	static Pokemon userPoke;
@@ -11,30 +12,30 @@ public class Main {
 
 		int userPokeChoice = Input.nextInt();
 		switch(userPokeChoice) {
-			case 1: userPoke = new Pokemon("Charmander", 39, 52, 43, 60, 50, 65, new Moves("Scratch", 40, 40, 1.0), new Moves("Flamethrower", 90, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "fire", "");
+			case 1: userPoke = new Pokemon("Charmander", 39, 52, 43, 60, 50, 65, 10, new Moves("Scratch", 40, 40, 1.0), new Moves("Flamethrower", 90, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "fire", "");
 					break;
 			case 2: System.out.println("I tried to warn you...");
-					userPoke = new Pokemon("Bulbasaur", 0, 49, 49, 65, 65, 45, new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "plant", "");
+					userPoke = new Pokemon("Bulbasaur", 0, 49, 49, 65, 65, 45, 10, new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "plant", "");
 					break;
-			case 3: userPoke = new Pokemon("Squirtle", 44, 48, 65, 50, 64, 43, new Moves("Scratch", 40, 40, 1.0), new Moves("Hydro Pump", 110, 5, 0.8), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "water", "");
+			case 3: userPoke = new Pokemon("Squirtle", 44, 48, 65, 50, 64, 43, 10, new Moves("Scratch", 40, 40, 1.0), new Moves("Hydro Pump", 110, 5, 0.8), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "water", "");
 					break;
 		}
 
 		double enemy = Math.random()*3;
 		if(enemy < 0.5) {
-			enemPoke = new Pokemon("Growlithe", 55, 70, 45, 70, 50, 60, new Moves("Scratch", 40, 40, 1.0), new Moves("Flamethrower", 90, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "fire", "");
+			enemPoke = new Pokemon("Growlithe", 55, 70, 45, 70, 50, 60, 10, new Moves("Scratch", 40, 40, 1.0), new Moves("Flamethrower", 90, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "fire", "");
 		}else if(enemy < 1.0) {
-			enemPoke = new Pokemon("Eevee", 55, 55, 50, 45, 65, 505, new Moves("Scratch", 40, 40, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "normal", "");
+			enemPoke = new Pokemon("Eevee", 55, 55, 50, 45, 65, 505, 10, new Moves("Scratch", 40, 40, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "normal", "");
 		}else if(enemy < 1.5) {
-			enemPoke = new Pokemon("Magikarp", 20, 10, 55, 15, 20, 80, new Moves("Splash", 0, 40, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "water", "");
+			enemPoke = new Pokemon("Magikarp", 20, 10, 55, 15, 20, 80, 10, new Moves("Splash", 0, 40, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "water", "");
 		}else if(enemy < 2.0) {
-			enemPoke = new Pokemon("Pikachu", 35, 55, 30, 50, 40, 90, new Moves("Scratch", 40, 40, 1.0), new Moves("Thunderbolt", 90, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0),"electric", "");
+			enemPoke = new Pokemon("Pikachu", 35, 55, 30, 50, 40, 90, 10, new Moves("Scratch", 40, 40, 1.0), new Moves("Thunderbolt", 90, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0),"electric", "");
 		}else if(enemy < 2.5) {
-			enemPoke = new Pokemon("Clefairy", 70, 45, 48, 60, 65, 35, new Moves("Scratch", 40, 40, 1.0), new Moves("Body Slam", 85, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "fairy", "");
+			enemPoke = new Pokemon("Clefairy", 70, 45, 48, 60, 65, 35, 10, new Moves("Scratch", 40, 40, 1.0), new Moves("Body Slam", 85, 15, 1.0), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "fairy", "");
 		}else if(enemy < 2.75) {
-			enemPoke = new Pokemon("Arceus", 120, 120, 120, 120, 120, 120, new Moves("Dragon Rush", 100, 10, 1.0), new Moves("Hyper Beam", 160, 10, 0.85), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "normal", "");
+			enemPoke = new Pokemon("Arceus", 120, 120, 120, 120, 120, 120, 10, new Moves("Dragon Rush", 100, 10, 1.0), new Moves("Hyper Beam", 160, 10, 0.85), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "normal", "");
 		}else if(enemy < 3.0) {
-			enemPoke = new Pokemon("Giratina", 150, 120, 100, 120, 100, 90, new Moves("Dragon Rush", 100, 10, 1.0), new Moves("Hyper Beam", 160, 10, 0.85), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "ghost", "dragon");
+			enemPoke = new Pokemon("Giratina", 150, 120, 100, 120, 100, 90, 10, new Moves("Dragon Rush", 100, 10, 1.0), new Moves("Hyper Beam", 160, 10, 0.85), new Moves("Empty", 0, 0, 1.0), new Moves("Empty", 0, 0, 1.0), "ghost", "dragon");
 		}
 		BattleStart(userPoke, enemPoke);
 	}
@@ -68,16 +69,13 @@ public class Main {
 					break;
 			case 3: swapActive();
 					break;
-			case 4: run();
+			case 4: run(a, b);
 					break;
 		}
-		if(a.hp < 0) {
-			System.out.println("YOU DIED");
-		}else if(b.hp < 0){
-			System.out.println("YOU WIN");
-		}else {
-			BattleStart(a, b);
+		if(!killgame) {
+			win(a, b);
 		}
+		killgame = true;
 	}
 
 	static int calcpower;
@@ -88,12 +86,12 @@ public class Main {
 	public static Moves enemAtt;
 	public static Moves move1;
 	public static Moves move2;
+	public static int escapeAttempts = 0;
 	public static void fight(Pokemon a, Pokemon b, String priority) {
 		System.out.println("What move would you like to use?\n1) " + a.m1.name + " : " + a.m1.PP + "\n2) " + a.m2.name + " : " + a.m2.PP + "\n3) " + a.m3.name + " : " + a.m3.PP + "\n4) " + a.m4.name + " : " + a.m4.PP);
 		int userMoveChoice = Input.nextInt();
 		int Mod = 1;
-		double enemAttChoice = Math.random()*4.0;
-		int enemChoice = ((int) enemAttChoice)+1;
+		int enemChoice = moveChoice(b);
 		if(a.name == priority) {
 			c = a;
 			d = b;
@@ -160,14 +158,14 @@ public class Main {
 		}
 		powerMove.PP -= 1;
 		enemAtt.PP -= 1;
-		System.out.println(enemAtt + " " + enemAttChoice);
-		int damage = -1*((((20/5)+2)*power*(c.att/d.def)/50)+2)*Mod;
+		System.out.println(enemAtt + " " + enemChoice);
+		int damage = -1*((((2*c.level/5)+2)*power*(c.att/d.def)/50)+2)*Mod;
 		if(!move1.name.equalsIgnoreCase("Empty") && move1.PP >= 0) {
 			d.adjHp(damage);
 			System.out.println(c.name + " used " + move1.name + "!");
 			System.out.println(c.name + " hit " + d.name + " for " + damage + " damage!");
 		}
-		damage = -1*((((20/5)+2)*enemAtt.power*(d.att/c.def)/50)+2)*Mod;
+		damage = -1*((((2*d.level/5)+2)*enemAtt.power*(d.att/c.def)/50)+2)*Mod;
 		if(!move2.name.equalsIgnoreCase("Empty") && move2.PP >= 0) {
 			System.out.println(d.name  + " used " + move2.name + "!");
 			System.out.println(d.name + " hit " + c.name + " for " + damage + " damage!");
@@ -179,8 +177,17 @@ public class Main {
 		
 	}
 	
-	public static void run() {
-		
+	public static void run(Pokemon a, Pokemon b) {
+		escapeAttempts += 1;
+		double chance = ((((double)a.speed*32.0)/(((double)b.speed/4.0)%256.0))+30.0)*(double)escapeAttempts;
+		double rand = Math.random()*255.0;
+		if(rand<chance || chance >= 255 || b.speed == 0) {
+			System.out.println("You escaped successfully");
+			killgame = true;
+		}else{
+			System.out.println("Your escape attempt failed!");
+			BattleStart(a, b);
+		}
 	}
 	
 	public static void swapActive() {
@@ -196,24 +203,36 @@ public class Main {
 						return enemChoice;
 					}
 					break;
-			case 2 : if(a.m1.name.equalsIgnoreCase("Empty")) {
+			case 2 : if(a.m2.name.equalsIgnoreCase("Empty")) {
 							moveChoice(a);
 					}else {
 						return enemChoice;
 					}
 					break;
-			case 3 : if(a.m1.name.equalsIgnoreCase("Empty")) {
+			case 3 : if(a.m3.name.equalsIgnoreCase("Empty")) {
 						moveChoice(a);
 					}else {
 						return enemChoice;
 					}
 				   	break;
-			case 4 : if(a.m1.name.equalsIgnoreCase("Empty")) {
+			case 4 : if(a.m4.name.equalsIgnoreCase("Empty")) {
 						moveChoice(a);
 					}else {
 						return enemChoice;
 					}
 					break;
+		}
+		return 1;
+	}
+	
+	public static void win(Pokemon a, Pokemon b) {
+
+		if(a.hp < 0) {
+			System.out.println("YOU DIED");
+		}else if(b.hp < 0){
+			System.out.println("YOU WIN");
+		}else {
+			BattleStart(a, b);
 		}
 	}
 }

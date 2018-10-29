@@ -14,7 +14,8 @@ public class Pokemon {
 	public Moves m4;
 	public String type1;
 	public String type2;
-	Pokemon(String a, int b, int c, int d, int e, int f, int g, Moves h, Moves i, Moves j, Moves k, String l, String m){
+	public int level;
+	Pokemon(String a, int b, int c, int d, int e, int f, int g, int lvl, Moves h, Moves i, Moves j, Moves k, String l, String m){
 		name = a;
 		hp = b;
 		att = c;
@@ -28,6 +29,7 @@ public class Pokemon {
 		m4 = k;
 		type1 = type1 != null ? type1 : l;
 		type2 = type2 != null ? type2 : m;
+		level = lvl;
 	}
 
 	public void adjHp(int diff) {
