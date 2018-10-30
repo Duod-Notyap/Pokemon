@@ -88,7 +88,7 @@ public class Battle {
 	public static Moves move2;
 	public static int escapeAttempts = 0;
 	public static void fight(Pokemon a, Pokemon b, String priority) {
-		System.out.println("What move would you like to use?\n1) " + a.m1.name + " : " + a.m1.PP + "\n2) " + a.m2.name + " : " + a.m2.PP + "\n3) " + a.m3.name + " : " + a.m3.PP + "\n4) " + a.m4.name + " : " + a.m4.PP);
+		System.out.println("What move would you like to use?\n1) " + a.m1.name + " | PP: " + a.m1.PP + "\n2) " + a.m2.name + " | PP: " + a.m2.PP + "\n3) " + a.m3.name + " : " + a.m3.PP + "\n4) " + a.m4.name + " : " + a.m4.PP);
 		int userMoveChoice = Input.nextInt();
 		int Mod = 1;
 		int enemChoice = moveChoice(b);
@@ -158,7 +158,6 @@ public class Battle {
 		}
 		powerMove.PP -= 1;
 		enemAtt.PP -= 1;
-		System.out.println(enemAtt + " " + enemChoice);
 		int damage = -1*((((2*c.level/5)+2)*power*(c.att/d.def)/50)+2)*Mod;
 		if(!move1.name.equalsIgnoreCase("Empty") && move1.PP >= 0) {
 			d.adjHp(damage);
