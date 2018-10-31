@@ -7,6 +7,7 @@ public class Battle {
 	static Scanner Input = new Scanner(System.in);
 	static Pokemon enemPoke;
 	static Pokemon userPoke;
+	public static String battleSummary = "";
 	public static void main(String[] args) {
 		System.out.println("Choose a starter Pokemon:\n1)Charmander\n2)Bulbasaur(i swear to god if you pick this)\n3)Squirtle");
 
@@ -87,6 +88,7 @@ public class Battle {
 	public static Moves move1;
 	public static Moves move2;
 	public static int escapeAttempts = 0;
+	public static int damage2;
 	public static void fight(Pokemon a, Pokemon b, String priority) {
 		System.out.println("What move would you like to use?\n1) " + a.m1.name + " | PP: " + a.m1.PP + "\n2) " + a.m2.name + " | PP: " + a.m2.PP + "\n3) " + a.m3.name + " : " + a.m3.PP + "\n4) " + a.m4.name + " : " + a.m4.PP);
 		int userMoveChoice = Input.nextInt();
@@ -164,12 +166,14 @@ public class Battle {
 			System.out.println(c.name + " used " + move1.name + "!");
 			System.out.println(c.name + " hit " + d.name + " for " + damage + " damage!");
 		}
-		damage = -1*((((2*d.level/5)+2)*enemAtt.power*(d.att/c.def)/50)+2)*Mod;
+		damage2 = -1*((((2*d.level/5)+2)*enemAtt.power*(d.att/c.def)/50)+2)*Mod;
 		if(!move2.name.equalsIgnoreCase("Empty") && move2.PP >= 0) {
 			System.out.println(d.name  + " used " + move2.name + "!");
 			System.out.println(d.name + " hit " + c.name + " for " + damage + " damage!");
-			c.adjHp(damage);
+			c.adjHp(damage2);
 		}
+		battleSummary += c.name + " hit " + d.name + " for " + damage + " damage using " + move1.name + "!\n";
+		battleSummary += d.name + " hit " + c.name + " for " + damage + " damage using " + move2.name + "!\n";
 	}
 	
 	public static void bag() {
@@ -228,8 +232,10 @@ public class Battle {
 
 		if(a.hp < 0) {
 			System.out.println("YOU DIED");
+			System.out.println(battleSummary);
 		}else if(b.hp < 0){
 			System.out.println("YOU WIN");
+			System.out.println(battleSummary);
 		}else {
 			BattleStart(a, b);
 		}
